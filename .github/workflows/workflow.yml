@@ -37,7 +37,7 @@ jobs:
         run: ls
       - name: Output dist
         run: ls dist
-      - name: Output filename
+      - name: Output JS filename
         run: echo "${{ needs.build.outputs.script-file }}"
       - name: Deploy
         run: echo "Deploying..."

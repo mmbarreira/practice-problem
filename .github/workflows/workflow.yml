@@ -21,7 +21,7 @@ jobs:
       - name: Build website
         run: npm run test
       - name: Output env
-        run: echo "environm= $ENV_VARIABLE"
+        run: echo "environm: $ENV_VARIABLE"
   build:
     needs: test
     runs-on: ubuntu-latest

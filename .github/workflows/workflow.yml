@@ -56,6 +56,8 @@ jobs:
           path: |
             dist
             package.json
+      - name: Test Env Vars
+        run: echo "Test env var = ${{ needs.test.env.JOB_ENV }}
   deploy:
     needs: build
     runs-on: ubuntu-latest

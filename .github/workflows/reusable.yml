@@ -17,5 +17,7 @@ jobs:
           name: ${{ inputs.artifact-name }}
       - name: List files
         run: ls
+      - name: Show secrets
+        run: echo "secret= ${{ secrets.MY_PASSWORD }}"
       - name: Output Information
         run: echo "deploying and uploading..."

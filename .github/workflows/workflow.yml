@@ -3,10 +3,12 @@ on:
   push:
     branches:
       - master
+env:
+  GLOBAL_ENV: Global environment variable
 jobs:
   test:
     env:
-      ENV_VARIABLE: ENVIRONMENT_VARIABLE_1
+      JOB_ENV: Job environment variable
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -21,7 +23,9 @@ jobs:
       - name: Build website
         run: npm run test
       - name: Output env
-        run: echo "environm: $ENV_VARIABLE"
+        run: |
+          echo "global var: GLOBAL_ENV"
+          echo "job var: JOB_ENV"
   build:
     needs: test
     runs-on: ubuntu-latest

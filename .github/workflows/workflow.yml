@@ -24,8 +24,8 @@ jobs:
         run: npm run test
       - name: Output env
         run: |
-          echo "global var: GLOBAL_ENV"
-          echo "job var: JOB_ENV"
+          echo "global var: $GLOBAL_ENV"
+          echo "job var: $JOB_ENV"
   build:
     needs: test
     runs-on: ubuntu-latest

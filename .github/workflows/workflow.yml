@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Create var
         id: create-var
-        run: echo "var=varrrrr" >> $GITHUB_OUTPUT
+        run: echo "var=created in before step" >> $GITHUB_OUTPUT
       - name: Read var
         run: echo ${{ steps.create-var.outputs.var }}
       - name: Get code

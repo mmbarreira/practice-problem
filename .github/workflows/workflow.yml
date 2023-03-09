@@ -5,6 +5,7 @@ on:
       - master
 env:
   GLOBAL_ENV: Global environment variable
+  PASSWORD: ${{ secrets.MY_PASSWORD }}
 jobs:
   test:
     env:
@@ -31,6 +32,8 @@ jobs:
         run: |
           echo "global var: $GLOBAL_ENV"
           echo "job var: $JOB_ENV"
+          echo "job var: ${{ env.JOV_ENV }}"
+          echo "secret password: ${{ env.PASSWORD }}"
   build:
     needs: test
     runs-on: ubuntu-latest

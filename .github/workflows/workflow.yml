@@ -28,13 +28,13 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run test
-      - name: Output env
+      - name: Output values from env and secrets
         run: |
           echo "global var: $GLOBAL_ENV"
           echo "job var: $JOB_ENV"
           echo "job var with env context: ${{ env.JOB_ENV }}"
           echo "secret password: $PASSWORD"
-          echo "secret password with secret context : ${{ secrets.MY_PASSWORD }}"
+          echo "secret password with secret context : ${{ secrets.FAIL }}"
   build:
     needs: test
     runs-on: ubuntu-latest

@@ -7,6 +7,12 @@ env:
   GLOBAL_ENV: Global environment variable
   PASSWORD: ${{ secrets.MY_PASSWORD }}
 jobs:
+  before:
+    runs-on: ubuntu-latest
+    environment: TEST
+    steps:
+      - name: Show environment secrets
+        run: echo ${{ secrets.ENV_PASSWORD }}
   test:
     env:
       JOB_ENV: Job environment variable

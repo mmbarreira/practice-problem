@@ -15,7 +15,7 @@ jobs:
         id: create-var
         run: echo "var=varrrrr" >> $GITHUB_OUTPUT
       - name: Read var
-        run: echo "${{ steps.create-var.outputs.var }}"
+        run: echo ${{ steps.create-var.outputs.var }}
       - name: Get code
         uses: actions/checkout@v3
       - name: Cache dependencies
@@ -61,8 +61,6 @@ jobs:
           path: |
             dist
             package.json
-      - name: Test Env Vars
-        run: echo "Test env var = ${{ needs.test.env.JOB_ENV }}
   deploy:
     needs: build
     runs-on: ubuntu-latest

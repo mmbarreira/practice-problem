@@ -87,6 +87,7 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       artifact-name: dist-files
+    secrets: inherit
   deploy:
     needs: build
     runs-on: ubuntu-latest

@@ -34,7 +34,7 @@ jobs:
           echo "job var: $JOB_ENV"
           echo "job var with env context: ${{ env.JOB_ENV }}"
           echo "secret password: $PASSWORD"
-          echo "secret password with secret context : ${{ secrets.FAIL }}"
+          echo "secret password with secret context : ${{ secrets.MY_PASSWORD }}"
   build:
     needs: test
     runs-on: ubuntu-latest

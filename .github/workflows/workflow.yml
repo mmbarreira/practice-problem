@@ -11,6 +11,11 @@ jobs:
       JOB_ENV: Job environment variable
     runs-on: ubuntu-latest
     steps:
+      - name: Create var
+        id: create-var
+        run: echo "var=varrrrr" >> $GITHUB_OUTPUT
+      - name: Read var
+        run: echo "${{ steps.create-var.outputs.var }}
       - name: Get code
         uses: actions/checkout@v3
       - name: Cache dependencies

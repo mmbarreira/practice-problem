@@ -6,8 +6,10 @@ import eslint from 'vite-plugin-eslint';
 export default defineConfig({
   plugins: [react(), eslint()],
   test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/test/setup.js',
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: './src/test/setup.js',
+      reporters: ['json'],
+      outputFile: 'test.json'
   },
 });

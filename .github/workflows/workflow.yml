@@ -18,6 +18,13 @@ jobs:
       JOB_ENV: Job environment variable
     runs-on: ubuntu-latest
     steps:
+      - name: Output values from env and secrets
+        run: |
+          echo "global var: $GLOBAL_ENV"
+          echo "job var: $JOB_ENV"
+          echo "job var with env context: ${{ env.JOB_ENV }}"
+          echo "secret password: $PASSWORD"
+          echo "secret password with secret context : ${{ secrets.MY_PASSWORD }}"
       - name: Create var
         id: create-var
         run: echo "var=created in before step" >> $GITHUB_OUTPUT
@@ -32,15 +39,15 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
-      - name: Build website
+      - name: Test
+        id: run-tests
         run: npm run test
-      - name: Output values from env and secrets
-        run: |
-          echo "global var: $GLOBAL_ENV"
-          echo "job var: $JOB_ENV"
-          echo "job var with env context: ${{ env.JOB_ENV }}"
-          echo "secret password: $PASSWORD"
-          echo "secret password with secret context : ${{ secrets.MY_PASSWORD }}"
+      - name: Upload Test Report
+        if:  steps.run-tests.outcome == 'failure'
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: test.json
   build:
     needs: test
     runs-on: ubuntu-latest

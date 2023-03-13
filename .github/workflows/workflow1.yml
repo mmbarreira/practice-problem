@@ -9,6 +9,7 @@ on:
       - master
     paths-ignore:
       - '.github/workflows/*'
+      - '.github/actions/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest

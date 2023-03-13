@@ -37,7 +37,7 @@ jobs:
         uses: ./.github/actions/cached-deps # using composite action
         with:
           input-1: INPUT 1!
-          caching: 'false'
+          caching: 'true'
       - name: Output information
         run: echo ${{ steps.my-action.output.result }}
       - name: Test

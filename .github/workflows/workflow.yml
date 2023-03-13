@@ -36,7 +36,7 @@ jobs:
         uses: ./.github/actions/cached-deps # using composite action
         with:
           input-1: INPUT 1!
-          caching: false
+          caching: 'false'
       - name: Test
         id: run-tests
         run: npm run test

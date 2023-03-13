@@ -27,7 +27,7 @@ runs:
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
       run: |
         npm ci
-        echo "input-1=${{ inputs.input-1 }} >> $GITHUB_OUTPUT
+        echo "input-1=${{ inputs.input-1 }}" >> $GITHUB_OUTPUT
       shell: bash
     - name: Output input 1
       run: echo ${{ inputs.input-1 }}

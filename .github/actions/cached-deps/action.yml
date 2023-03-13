@@ -1,4 +1,4 @@
-name: Get & Cache dependencies
+name: Get & Cache dependencies (custom action)
 description: Get the dependencies and cache them
 runs:
   using: composite

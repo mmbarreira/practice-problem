@@ -8,6 +8,10 @@ inputs:
     description: if cache is needed
     required: false
     default: 'true'
+outputs:
+  result:
+    description: Whether the cache was used.
+    value: ${{ steps.install.outputs.input-1 }}
 runs:
   using: composite
   steps:
@@ -19,8 +23,11 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
+      id: install
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
-      run: npm ci
+      run: |
+        npm ci
+        echo "input-1=${{ inputs.input-1 }} >> $GITHUB_OUTPUT
       shell: bash
     - name: Output input 1
       run: echo ${{ inputs.input-1 }}

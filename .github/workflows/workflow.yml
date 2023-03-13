@@ -33,10 +33,13 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Load and cache dependencies
+        id: my-action
         uses: ./.github/actions/cached-deps # using composite action
         with:
           input-1: INPUT 1!
-          caching: true
+          caching: 'false'
+      - name: Output information
+        run: echo ${{ steps.my-action.output.result }}
       - name: Test
         id: run-tests
         run: npm run test

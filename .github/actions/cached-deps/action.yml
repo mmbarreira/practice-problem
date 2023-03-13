@@ -1,5 +1,5 @@
 name: Get & Cache dependencies (custom action)
-description: Get the dependencies and cache them
+description: Get the dependencies and cache
 inputs:
   input-1:
     description: the input 1 name

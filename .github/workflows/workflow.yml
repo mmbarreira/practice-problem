@@ -39,7 +39,7 @@ jobs:
           input-1: INPUT 1!
           caching: 'false'
       - name: Output information
-        run: echo ${{ steps.my-action.output.result }}
+        run: echo ${{ steps.my-action.outputs.result }}
       - name: Test
         id: run-tests
         run: npm run test
